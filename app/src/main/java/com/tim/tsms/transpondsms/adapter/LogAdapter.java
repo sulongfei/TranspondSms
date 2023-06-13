@@ -68,7 +68,7 @@ public class LogAdapter extends ArrayAdapter<LogVo> {
 
         // 获取控件实例，并调用set...方法使其显示出来
         if(logVo!=null){
-            viewHolder.tLogFrom.setText(logVo.getFrom());
+            viewHolder.tLogFrom.setText(""+logVo.getFrom());
             viewHolder.tLogRule.setText(logVo.getRule());
             String extraStr="";
             //try phrase json setting

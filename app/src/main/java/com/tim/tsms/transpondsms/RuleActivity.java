@@ -4,8 +4,6 @@ import android.content.DialogInterface;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import android.support.v7.app.AlertDialog;
-import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
@@ -25,7 +23,6 @@ import com.tim.tsms.transpondsms.model.vo.SmsVo;
 import com.tim.tsms.transpondsms.utils.RuleUtil;
 import com.tim.tsms.transpondsms.utils.sender.SendUtil;
 import com.tim.tsms.transpondsms.utils.sender.SenderUtil;
-import com.umeng.analytics.MobclickAgent;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -33,13 +30,16 @@ import java.util.List;
 
 import static com.tim.tsms.transpondsms.SenderActivity.NOTIFY;
 
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
+
 public class RuleActivity extends AppCompatActivity {
 
     private String TAG = "RuleActivity";
     // 用于存储数据
     private List<RuleModel> ruleModels = new ArrayList<>();
     private RuleAdapter adapter;
-    private Long  selectSenderId=0l;
+    private Long  selectSenderId= 0L;
     private String  selectSenderName="";
 
     //消息处理者,创建一个Handler的子类对象,目的是重写Handler的处理消息的方法(handleMessage())
@@ -131,10 +131,14 @@ public class RuleActivity extends AppCompatActivity {
         final View view1 = View.inflate(RuleActivity.this, R.layout.activity_alter_dialog_setview_rule, null);
 
         final RadioGroup radioGroupRuleFiled = (RadioGroup) view1.findViewById(R.id.radioGroupRuleFiled);
-        if(ruleModel!=null)radioGroupRuleFiled.check(ruleModel.getRuleFiledCheckId());
+        if(ruleModel!=null) {
+            radioGroupRuleFiled.check(ruleModel.getRuleFiledCheckId());
+        }
 
         final RadioGroup radioGroupRuleCheck = (RadioGroup) view1.findViewById(R.id.radioGroupRuleCheck);
-        if(ruleModel!=null)radioGroupRuleCheck.check(ruleModel.getRuleCheckCheckId());
+        if(ruleModel!=null) {
+            radioGroupRuleCheck.check(ruleModel.getRuleCheckCheckId());
+        }
         
         final TextView tv_mu_rule_tips = (TextView) view1.findViewById(R.id.tv_mu_rule_tips);
         final TextView ruleSenderTv = (TextView) view1.findViewById(R.id.ruleSenderTv);
@@ -155,8 +159,9 @@ public class RuleActivity extends AppCompatActivity {
         });
 
         final EditText editTextRuleValue = view1.findViewById(R.id.editTextRuleValue);
-        if (ruleModel != null)
+        if (ruleModel != null) {
             editTextRuleValue.setText(ruleModel.getValue());
+        }
 
         //当更新选择的字段的时候，更新之下各个选项的状态
         refreshSelectRadioGroupRuleFiled(radioGroupRuleFiled, radioGroupRuleCheck, editTextRuleValue,tv_mu_rule_tips);
@@ -347,13 +352,11 @@ public class RuleActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        MobclickAgent.onResume(this);
     }
 
     @Override
     protected void onPause() {
         super.onPause();
-        MobclickAgent.onPause(this);
     }
 
 }

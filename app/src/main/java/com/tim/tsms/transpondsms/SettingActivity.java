@@ -2,8 +2,6 @@ package com.tim.tsms.transpondsms;
 
 import android.content.DialogInterface;
 import android.os.Bundle;
-import android.support.v7.app.AlertDialog;
-import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
@@ -11,23 +9,10 @@ import android.view.View;
 import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.Switch;
-import android.widget.Toast;
 
-import com.alibaba.fastjson.JSON;
-import com.alibaba.fastjson.JSONObject;
-import com.tim.tsms.transpondsms.model.vo.FeedBackResult;
-import com.tim.tsms.transpondsms.utils.HttpI;
-import com.tim.tsms.transpondsms.utils.HttpUtil;
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.tim.tsms.transpondsms.utils.SettingUtil;
-import com.tim.tsms.transpondsms.utils.UpdateAppHttpUtil;
-import com.tim.tsms.transpondsms.utils.aUtil;
-import com.vector.update_app.UpdateAppManager;
-import com.vector.update_app.UpdateCallback;
-import com.vector.update_app.listener.ExceptionHandler;
-
-import java.util.HashMap;
-import java.util.Map;
-
 
 public class SettingActivity extends AppCompatActivity {
     private String TAG = "SettingActivity";

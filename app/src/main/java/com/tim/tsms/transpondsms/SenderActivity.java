@@ -4,8 +4,6 @@ import android.content.DialogInterface;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import android.support.v7.app.AlertDialog;
-import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
@@ -27,7 +25,6 @@ import com.tim.tsms.transpondsms.utils.sender.SenderMailMsg;
 import com.tim.tsms.transpondsms.utils.sender.SenderQyWxGroupRobotMsg;
 import com.tim.tsms.transpondsms.utils.sender.SenderUtil;
 import com.tim.tsms.transpondsms.utils.sender.SenderWebNotifyMsg;
-import com.umeng.analytics.MobclickAgent;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -39,6 +36,9 @@ import static com.tim.tsms.transpondsms.model.SenderModel.TYPE_DINGDING;
 import static com.tim.tsms.transpondsms.model.SenderModel.TYPE_EMAIL;
 import static com.tim.tsms.transpondsms.model.SenderModel.TYPE_QYWX_GROUP_ROBOT;
 import static com.tim.tsms.transpondsms.model.SenderModel.TYPE_WEB_NOTIFY;
+
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
 
 public class SenderActivity extends AppCompatActivity {
 
@@ -186,20 +186,25 @@ public class SenderActivity extends AppCompatActivity {
         View view1 = View.inflate(SenderActivity.this, R.layout.activity_alter_dialog_setview_dingding, null);
 
         final EditText editTextDingdingName = view1.findViewById(R.id.editTextDingdingName);
-        if (senderModel != null)
+        if (senderModel != null) {
             editTextDingdingName.setText(senderModel.getName());
+        }
         final EditText editTextDingdingToken = view1.findViewById(R.id.editTextDingdingToken);
-        if (dingDingSettingVo != null)
+        if (dingDingSettingVo != null) {
             editTextDingdingToken.setText(dingDingSettingVo.getToken());
+        }
         final EditText editTextDingdingSecret = view1.findViewById(R.id.editTextDingdingSecret);
-        if (dingDingSettingVo != null)
+        if (dingDingSettingVo != null) {
             editTextDingdingSecret.setText(dingDingSettingVo.getSecret());
+        }
         final EditText editTextDingdingAtMobiles = view1.findViewById(R.id.editTextDingdingAtMobiles);
-        if (dingDingSettingVo != null && dingDingSettingVo.getAtMobils()!=null)
+        if (dingDingSettingVo != null && dingDingSettingVo.getAtMobils()!=null) {
             editTextDingdingAtMobiles.setText(dingDingSettingVo.getAtMobils());
+        }
         final Switch switchDingdingAtAll = view1.findViewById(R.id.switchDingdingAtAll);
-        if (dingDingSettingVo != null && dingDingSettingVo.getAtAll()!=null)
+        if (dingDingSettingVo != null && dingDingSettingVo.getAtAll()!=null) {
             switchDingdingAtAll.setChecked(dingDingSettingVo.getAtAll());
+        }
 
         Button buttondingdingok = view1.findViewById(R.id.buttondingdingok);
         Button buttondingdingdel = view1.findViewById(R.id.buttondingdingdel);
@@ -299,20 +304,34 @@ public class SenderActivity extends AppCompatActivity {
         View view1 = View.inflate(SenderActivity.this, R.layout.activity_alter_dialog_setview_email, null);
 
         final EditText editTextEmailName = view1.findViewById(R.id.editTextEmailName);
-        if (senderModel != null) editTextEmailName.setText(senderModel.getName());
+        if (senderModel != null) {
+            editTextEmailName.setText(senderModel.getName());
+        }
         final EditText editTextEmailHost = view1.findViewById(R.id.editTextEmailHost);
-        if (emailSettingVo != null) editTextEmailHost.setText(emailSettingVo.getHost());
+        if (emailSettingVo != null) {
+            editTextEmailHost.setText(emailSettingVo.getHost());
+        }
         final EditText editTextEmailPort = view1.findViewById(R.id.editTextEmailPort);
-        if (emailSettingVo != null) editTextEmailPort.setText(emailSettingVo.getPort());
+        if (emailSettingVo != null) {
+            editTextEmailPort.setText(emailSettingVo.getPort());
+        }
 
         final Switch switchEmailSSl = view1.findViewById(R.id.switchEmailSSl);
-        if (emailSettingVo != null) switchEmailSSl.setChecked(emailSettingVo.getSsl());
+        if (emailSettingVo != null) {
+            switchEmailSSl.setChecked(emailSettingVo.getSsl());
+        }
         final EditText editTextEmailFromAdd = view1.findViewById(R.id.editTextEmailFromAdd);
-        if (emailSettingVo != null) editTextEmailFromAdd.setText(emailSettingVo.getFromEmail());
+        if (emailSettingVo != null) {
+            editTextEmailFromAdd.setText(emailSettingVo.getFromEmail());
+        }
         final EditText editTextEmailPsw = view1.findViewById(R.id.editTextEmailPsw);
-        if (emailSettingVo != null) editTextEmailPsw.setText(emailSettingVo.getPwd());
+        if (emailSettingVo != null) {
+            editTextEmailPsw.setText(emailSettingVo.getPwd());
+        }
         final EditText editTextEmailToAdd = view1.findViewById(R.id.editTextEmailToAdd);
-        if (emailSettingVo != null) editTextEmailToAdd.setText(emailSettingVo.getToEmail());
+        if (emailSettingVo != null) {
+            editTextEmailToAdd.setText(emailSettingVo.getToEmail());
+        }
 
         Button buttonemailok = view1.findViewById(R.id.buttonemailok);
         Button buttonemaildel = view1.findViewById(R.id.buttonemaildel);
@@ -417,11 +436,17 @@ public class SenderActivity extends AppCompatActivity {
         View view1 = View.inflate(SenderActivity.this, R.layout.activity_alter_dialog_setview_webnotify, null);
 
         final EditText editTextWebNotifyName = view1.findViewById(R.id.editTextWebNotifyName);
-        if (senderModel != null) editTextWebNotifyName.setText(senderModel.getName());
+        if (senderModel != null) {
+            editTextWebNotifyName.setText(senderModel.getName());
+        }
         final EditText editTextWebNotifyToken = view1.findViewById(R.id.editTextWebNotifyToken);
-        if (webNotifySettingVo != null) editTextWebNotifyToken.setText(webNotifySettingVo.getToken());
+        if (webNotifySettingVo != null) {
+            editTextWebNotifyToken.setText(webNotifySettingVo.getToken());
+        }
         final EditText editTextWebNotifySecret = view1.findViewById(R.id.editTextWebNotifySecret);
-        if (webNotifySettingVo != null) editTextWebNotifySecret.setText(webNotifySettingVo.getSecret());
+        if (webNotifySettingVo != null) {
+            editTextWebNotifySecret.setText(webNotifySettingVo.getSecret());
+        }
 
         Button buttonbebnotifyok = view1.findViewById(R.id.buttonbebnotifyok);
         Button buttonbebnotifydel = view1.findViewById(R.id.buttonbebnotifydel);
@@ -512,9 +537,13 @@ public class SenderActivity extends AppCompatActivity {
         View view1 = View.inflate(SenderActivity.this, R.layout.activity_alter_dialog_setview_qywxgrouprobot, null);
 
         final EditText editTextQYWXGroupRobotName = view1.findViewById(R.id.editTextQYWXGroupRobotName);
-        if (senderModel != null) editTextQYWXGroupRobotName.setText(senderModel.getName());
+        if (senderModel != null) {
+            editTextQYWXGroupRobotName.setText(senderModel.getName());
+        }
         final EditText editTextQYWXGroupRobotWebHook = view1.findViewById(R.id.editTextQYWXGroupRobotWebHook);
-        if (qywxGroupRobotSettingVo != null) editTextQYWXGroupRobotWebHook.setText(qywxGroupRobotSettingVo.getWebHook());
+        if (qywxGroupRobotSettingVo != null) {
+            editTextQYWXGroupRobotWebHook.setText(qywxGroupRobotSettingVo.getWebHook());
+        }
 
         Button buttonQyWxGroupRobotOk = view1.findViewById(R.id.buttonQyWxGroupRobotOk);
         Button buttonQyWxGroupRobotDel = view1.findViewById(R.id.buttonQyWxGroupRobotDel);
@@ -598,13 +627,11 @@ public class SenderActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        MobclickAgent.onResume(this);
     }
 
     @Override
     protected void onPause() {
         super.onPause();
-        MobclickAgent.onPause(this);
     }
 
 }

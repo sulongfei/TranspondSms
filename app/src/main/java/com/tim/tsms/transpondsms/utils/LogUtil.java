@@ -47,7 +47,9 @@ public class LogUtil {
     public static long addLog(LogModel logModel) {
         Log.i(TAG, "addLog logModel: "+logModel);
         //不保存转发消息
-        if (logModel==null) return 0;
+        if (logModel==null) {
+            return 0;
+        }
 
         // Create a new map of values, where column names are the keys
         ContentValues values = new ContentValues();

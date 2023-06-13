@@ -11,8 +11,6 @@ import android.util.Log;
 
 import com.tim.tsms.transpondsms.utils.sender.SendHistory;
 import com.tim.tsms.transpondsms.utils.SettingUtil;
-import com.umeng.analytics.MobclickAgent;
-import com.umeng.commonsdk.UMConfigure;
 
 public class MyApplication extends Application {
     private static final String TAG = "MyApplication";
@@ -26,13 +24,6 @@ public class MyApplication extends Application {
     public void onCreate() {
         Log.d(TAG,"onCreate");
         super.onCreate();
-        //初始化组件化基础库, 所有友盟业务SDK都必须调用此初始化接口。
-        //建议在宿主App的Application.onCreate函数中调用基础组件库初始化函数。
-        UMConfigure.init(this, "5f217c02b4b08b653e8f6b3d", getChannelName(this), UMConfigure.DEVICE_TYPE_PHONE, "");
-        // 选用LEGACY_AUTO页面采集模式
-        MobclickAgent.setPageCollectionMode(MobclickAgent.PageMode.LEGACY_MANUAL);
-        //pro close log
-        UMConfigure.setLogEnabled(true);
         Log.i(TAG,"uminit");
         Intent intent = new Intent(this,FrontService.class);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {

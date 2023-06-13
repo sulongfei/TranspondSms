@@ -59,7 +59,9 @@ public class TSMSBroadcastReceiver  extends BroadcastReceiver {
                         date=new Date(sms.getTimestampMillis());
 
                         String content=mobileToContent.get(mobile);
-                        if(content==null)content="";
+                        if(content==null) {
+                            content="";
+                        }
 
                         content+=sms.getMessageBody();//短信内容
                         mobileToContent.put(mobile,content);

@@ -7,9 +7,6 @@ import android.content.IntentFilter;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.os.Handler;
-import android.support.v4.app.ActivityCompat;
-import android.support.v7.app.AlertDialog;
-import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -17,6 +14,9 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
 
 import com.alibaba.fastjson.JSON;
 import com.tim.tsms.transpondsms.BroadCastReceiver.TSMSBroadcastReceiver;
@@ -24,7 +24,6 @@ import com.tim.tsms.transpondsms.adapter.LogAdapter;
 import com.tim.tsms.transpondsms.model.vo.LogVo;
 import com.tim.tsms.transpondsms.model.vo.SmsExtraVo;
 import com.tim.tsms.transpondsms.utils.LogUtil;
-import com.umeng.analytics.MobclickAgent;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -221,13 +220,11 @@ public class MainActivity extends AppCompatActivity implements ReFlashListView.I
     @Override
     protected void onResume() {
         super.onResume();
-        MobclickAgent.onResume(this);
     }
 
     @Override
     protected void onPause() {
         super.onPause();
-        MobclickAgent.onPause(this);
     }
 
 }
